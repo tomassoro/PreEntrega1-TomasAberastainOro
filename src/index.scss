@@ -1,0 +1,9 @@
+/*abstracts*/
+@use './scss/abstracts/mixins';
+@use './scss/abstracts/variables';
+/* bases */
+@use './scss/bases/base';
+@use './scss/bases/resets';
+//components
+@use './components/Navbar/navbar';
+@use './components/ItemListContainer/itemListContainer.scss'

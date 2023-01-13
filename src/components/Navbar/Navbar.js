@@ -1,3 +1,4 @@
+
 const Navbar = ({color, padding, display, justifyContent}) => {
     return (
         <nav className='navBar' style={{backgroundColor: color, padding: padding, display: display, justifyContent: justifyContent}}>

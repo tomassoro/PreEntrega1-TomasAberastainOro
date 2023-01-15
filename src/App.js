@@ -10,6 +10,16 @@ function App() {
   console.log(input)
   console.log(products)
   
+
+  useEffect(() =>{
+    fetch(`https://api.mercadolibre.com/sites/MLA/search?q=Mate+imperial+artesanal`)
+    .then(response =>{
+      return response.json()
+    })
+    .then(res => {
+      setProducts(res.results)
+    })
+  }, []) 
   const handleOnSubmit = (e) => {
     e.preventDefault()
         fetch(`https://api.mercadolibre.com/sites/MLA/search?q=Mate+imperial+artesanal+${input}`)
@@ -40,8 +50,7 @@ function App() {
           return (
             <div key={prod.id}>
               <h2>{prod.title}</h2>
-              <img src={prod.thumbnail}/>
-              <small>{prod.price}</small>
+              <img src={prod.thumbnail} alt={prod.title}/>
             </div>
           )
         })}

@@ -19,8 +19,8 @@ const ItemListContainer = () => {
     }, [categoryId]);
     return (
         <div className="ItemListContainer">
-        <h1>Listado de productos</h1>
-        <ItemList products={products}/>
+            <h1>Listado de productos</h1>   
+            <ItemList products={products}/>
         </div>
     )
 }

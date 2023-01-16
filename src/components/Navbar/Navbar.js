@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Navbar = ({color, padding, display, justifyContent}) => {
     return (
@@ -5,12 +6,12 @@ const Navbar = ({color, padding, display, justifyContent}) => {
             <h1>Los Narvales</h1>
             <img src='./Images/faro.png' width='60px' alt='Logo'/>
             <div>
-                <button onClick={()=>{console.log('Hola')}}>Productos</button>
-                <button onClick={()=>{console.log('Hola')}}>Imperiales</button>
-                <button onClick={()=>{console.log('Hola')}}>Yerba</button>
+                <Link to='/'><button>Productos</button></Link>
+                <Link to='./category/imperial'><button>Imperiales</button></Link>
+                <Link to='/'><button>Yerba</button></Link>
             </div>
         </nav>
-        
+
     );
 };
 export default Navbar;

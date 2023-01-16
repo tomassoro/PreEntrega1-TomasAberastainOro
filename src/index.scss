@@ -6,4 +6,5 @@
 @use './scss/bases/resets';
 //components
 @use './components/Navbar/navbar';
-@use './components/ItemListContainer/itemListContainer.scss'
+@use './components/ItemListContainer/itemListContainer.scss';
+@use './components/Item/Item.scss'

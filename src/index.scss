@@ -7,4 +7,5 @@
 //components
 @use './components/Navbar/navbar';
 @use './components/ItemListContainer/itemListContainer.scss';
-@use './components/Item/Item.scss'
+@use './components/Item/Item.scss';
+@use './components/ItemDetail/ItemDetail.scss'

@@ -5,7 +5,7 @@ const Item = ({id, name, img, price}) =>{
     return (
         <div className="Item" >
             <h4>{name}</h4>
-            <img src={img} alt={name} style={{width: 200}}/>
+            <img src={img} alt={name} style={{width: 300}}/>
             <p> ${price}</p>
             <Link to={`/item/${id}`}>Ver Detalle</Link>
         </div>

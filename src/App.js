@@ -1,72 +1,41 @@
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import AppRouter from './components/AppRouter/AppRouter';
+import { BrowserRouter} from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
+import { useState } from 'react';
+
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
+// const Notification = ({message}) =>{
+//   const Style =  () => toast("Wow so easy!");
+
+//       return(
+//         <div style={Style}>
+//           {message}
+//         </div>
+//       )
+// }
+
 function App() {
+  const notify = () => toast.success(' Agregado al carrito!', {
+    position: "top-right",
+    autoClose: 500,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
   return (
     <div>
       <BrowserRouter>
         <Navbar padding='25px' display='flex'/> 
-        <Routes>
-          <Route path='/' element={<ItemListContainer/>}/>  
-          <Route path='/category/:categoryId' element={<ItemListContainer/>}/>
-          <Route path='/item/:productId' element={<ItemDetailContainer/>}/>
-        </Routes>
+        <button onClick={notify}>Notify!</button>
+        <ToastContainer />
+        <AppRouter/>
       </BrowserRouter>
     </div>
   )
-  //   const [products, setProducts] = useState([]);
-//   const [input, setInput] = useState('');
-//   console.log(input)
-//   console.log(products)
-  
-
-//   useEffect(() =>{
-//     fetch(`https://api.mercadolibre.com/sites/MLA/search?q=Mate+imperial+artesanal`)
-//     .then(response =>{
-//       return response.json()
-//     })
-//     .then(res => {
-//       setProducts(res.results)
-//     })
-//   }, []) 
-//   const handleOnSubmit = (e) => {
-//     e.preventDefault()
-//         fetch(`https://api.mercadolibre.com/sites/MLA/search?q=Mate+imperial+artesanal+${input}`)
-//       .then(response =>{
-//         return response.json()
-//       })
-//       .then(res => {
-//         setProducts(res.results)
-//       })
-//     } 
-  
-
-
-//   return (
-//     <div className="App" display='flex'>
-//       <Navbar padding='25px' display='flex'/>
-//       <CartWidget />
-//       <ItemListContainer greeting='Bienvenidos a mates Los Narvales'/>   
-//       <Contador />
-      
-//       <form onSubmit={handleOnSubmit}>
-//         <input value={input} onChange={(e) => setInput(e.target.value)}/>
-//         <button type='submit'>Buscar</button>
-//       </form>
-
-//       <div>
-//         {products.map(prod =>{
-//           return (
-//             <div key={prod.id}>
-//               <h2>{prod.title}</h2>
-//               <img src={prod.thumbnail} alt={prod.title}/>
-//             </div>
-//           )
-//         })}
-//       </div>
-//     </div>
-//   );
-// } 
 }
 export default App; 

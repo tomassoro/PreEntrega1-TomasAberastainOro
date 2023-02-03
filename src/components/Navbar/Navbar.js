@@ -8,7 +8,7 @@ const Navbar = ({color, padding, display, justifyContent}) => {
             <div>
                 <Link to='../'><button>Productos</button></Link>
                 <Link to='../category/imperial'><button>Imperiales</button></Link>
-                <Link to='../category/labrado'><button>Yerba</button></Link>
+                <Link to='../category/yerba'><button>Yerba</button></Link>
             </div>
             <CartWidget/>
         </nav>

@@ -11,7 +11,7 @@ import ItemDetail from '../ItemDetail/ItemDetail'
 //     }
 // }
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({setCart}) => {
     const [product , setProduct] = useState({})
     const [loading, setLoading] = useState(true)
     const {productId} = useParams();
@@ -31,9 +31,9 @@ const ItemDetailContainer = () => {
     }, [productId])
     
     return (
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 20, fontSize: '1.5rem'}}>
+        <div style={{display: 'flex', alignItems: 'spaceBetween', marginTop: 20, fontSize: '1.5rem'}}>
             <h1>Detalle del producto</h1>
-            <ItemDetail {...product}/>
+            <ItemDetail {...product} setCart={setCart}/>
         </div>
     )
 }

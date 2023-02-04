@@ -3,6 +3,9 @@ import { getProducts , getProductsByCategory} from '../../asyncMock'
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 
+import Container from 'react-bootstrap/Container';
+
+
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const {categoryId} = useParams();
@@ -26,12 +29,14 @@ const ItemListContainer = () => {
         })
     }, [categoryId]);
     return (
-        <div className="ItemListContainer">
+        <Container>
             { loading ? <h3>Loading...</h3> : <h3>Loaded!</h3>}
             
             <h1>Listado de productos</h1>   
-            <ItemList products={products}/>
-        </div>
+            <div className="ItemListContainer">
+                <ItemList products={products}/>
+            </div>
+        </Container>
     )
 }
 export default ItemListContainer;

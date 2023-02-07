@@ -1,4 +1,11 @@
 .ItemListContainer{
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+    h1{
+        font-size: 1.5rem;
+        margin: 15px 0 30px;
+    }
 }

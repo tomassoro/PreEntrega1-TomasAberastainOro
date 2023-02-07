@@ -2,15 +2,16 @@ import { useEffect, useState } from "react";
 import { getProducts , getProductsByCategory} from '../../asyncMock'
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+import { Spinner } from '@chakra-ui/react'
 
-import Container from 'react-bootstrap/Container';
 
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const {categoryId} = useParams();
     const [loading, setLoading] = useState(true);
-
+    
+    
     useEffect(() => { 
         const asyncFunction = categoryId ? getProductsByCategory : getProducts;
         //traigo productos si es que en nuestra ruta se encuentra categoyId
@@ -19,7 +20,7 @@ const ItemListContainer = () => {
             setTimeout(() => { //aplico un retardo de la llegada y seteo los productos 
                 setLoading(false);
                 setProducts(products);
-            }, 500)
+            }, 1000)
         })
         .catch((error) => {
             console.log(error);
@@ -29,14 +30,16 @@ const ItemListContainer = () => {
         })
     }, [categoryId]);
     return (
-        <Container>
-            { loading ? <h3>Loading...</h3> : <h3>Loaded!</h3>}
-            
+        <div  className="ItemListContainer">
             <h1>Listado de productos</h1>   
-            <div className="ItemListContainer">
+            { <>
+                {loading && <Spinner size='xl' className="spinner"/>}
+                {!loading && null}
+            </>}
+            <div>
                 <ItemList products={products}/>
             </div>
-        </Container>
+        </div>
     )
 }
 export default ItemListContainer;

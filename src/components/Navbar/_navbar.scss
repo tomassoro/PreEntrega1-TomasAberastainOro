@@ -1,10 +1,27 @@
 .navBar{
     display: flex;
-    flex-direction: column;
+    padding: 10px;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
     box-shadow: 0px 2px black;
     background-color: var(--color-1);
 
-};
+    .logo{
+        display: flex;
+        align-items: center;
+        
+        h1{
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: black;
+        }
+    }
+    .navBarLinks{
+    display: flex;
+    gap: 10px;
+        .link{
+            font-size: 1rem
+        }
+    }            
+}
+

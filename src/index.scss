@@ -8,4 +8,6 @@
 @use './components/Navbar/navbar';
 @use './components/ItemListContainer/itemListContainer.scss';
 @use './components/Item/Item.scss';
-@use './components/ItemDetail/ItemDetail.scss'
+@use './components/ItemDetail/ItemDetail.scss';
+@use './components/ItemList/itemList.scss';
+@use './components/CartWidget/CartWidget.scss'

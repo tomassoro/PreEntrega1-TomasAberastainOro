@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getProductById } from '../../asyncMock'
 import ItemDetail from '../ItemDetail/ItemDetail'
 
+
 // const Cargando = () =>{
 //     if(loading){
 //         setTimeout(() =>{return(
@@ -31,9 +32,15 @@ const ItemDetailContainer = ({setCart}) => {
     }, [productId])
     
     return (
-        <div style={{display: 'flex', alignItems: 'spaceBetween', marginTop: 20, fontSize: '1.5rem'}}>
+        <div style={{display: 'flex', justifyContent:'center', marginTop: 20, fontSize: '1.5rem'}}>
+            { <>
+                {loading && <span >Loading...</span>}
+                {loading &&  null}
+            </>}
+        <div>
             <h1>Detalle del producto</h1>
             <ItemDetail {...product} setCart={setCart}/>
+        </div>
         </div>
     )
 }

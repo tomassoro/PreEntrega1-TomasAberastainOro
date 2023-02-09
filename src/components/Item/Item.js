@@ -9,7 +9,7 @@ const Item = ({id, name, img, price}) =>{
             <Card minW='xs' maxW='sm'>
                 <CardHeader>
                     <Heading size='md'>
-                        <h4>{name}</h4>
+                        {name}
                     </Heading>
                 </CardHeader>
                 <CardBody >
@@ -25,7 +25,7 @@ const Item = ({id, name, img, price}) =>{
                     </Center>
                     <Divider />
                     <CardFooter>
-                        <Link to={`/item/${id}`} className='detail'><button variant='ghost' colorScheme='blue'>Ver Detalle</button></Link>
+                        <Link to={`/item/${id}`} className='detail'><button variant='ghost' colorscheme='blue'>Ver Detalle</button></Link>
                     </CardFooter>
                 </CardBody>
             </Card>

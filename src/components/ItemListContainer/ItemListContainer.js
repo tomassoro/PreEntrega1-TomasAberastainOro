@@ -6,7 +6,7 @@ import { Spinner } from '@chakra-ui/react'
 
 
 
-const ItemListContainer = () => {
+const ItemListContainer = () => {   
     const [products, setProducts] = useState([]);
     const {categoryId} = useParams();
     const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ const ItemListContainer = () => {
             }, 1000)
         })
         .catch((error) => {
-            console.log(error);
+            console.log(error); 
         })
         .finally(()=>{
             setLoading(true)   

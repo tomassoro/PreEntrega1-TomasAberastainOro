@@ -4,17 +4,22 @@ import ItemCount from "../ItemCount/ItemCount"
 import { CartContext } from "../../context/CartContext"
 import { Card, CardHeader, CardBody, CardFooter, Heading,Divider,Text, Center } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
+import { NotificationContext } from '../../notification/NotificationService'
+
 
 
 const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
     const [quantity, setQuantity] = useState(0)
     const { addItem, isInCart } = useContext(CartContext)
+    const setNotification = useContext(NotificationContext)
     console.log(quantity)
+
+
     const handleOnAdd = (quantity) => {
-        console.log('agregue al carrito: ', quantity)
+        console.log('agregue al carrito: ', quantity)   
 
         setQuantity(parseInt(quantity))   
-        
+        setNotification(`Se agrego correctamente ${quantity} ${name}`, 5)        
         addItem({ id, name, price, quantity})
     }
 
@@ -23,7 +28,7 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
             <Card minW='xs' maxW='sm'>
             <CardHeader>
                 <Heading size='md'>
-                    <h4>{name}</h4>
+                    {name}
                 </Heading>
             </CardHeader>
             <CardBody >
@@ -53,7 +58,7 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
                         isInCart(id) ?(
                             <Link to='/cart'>Terminar compra</Link>    
                         ) : (
-                        <ItemCount stock={stock} onAdd={handleOnAdd} className='ItemCount'/>
+                        <ItemCount stock={stock} onConfirm={handleOnAdd} className='ItemCount'/>
                         )
                     }
                 </CardFooter>

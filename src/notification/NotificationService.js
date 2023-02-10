@@ -15,6 +15,7 @@ const Notification = ({ message }) => {
     top='80px'
     right='0px'
     padding='10px'
+    borderLeftRadius='1rem'
     position='absolute'
     textAlign='center'
     height='45px'

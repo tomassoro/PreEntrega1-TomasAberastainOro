@@ -2,8 +2,8 @@
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { Spinner } from '@chakra-ui/react'
-import {useAsync} from '../../hooks/UseAsync'
-import { getProducts } from "../../services/firebase/firestore/products";
+import { collection, getDocs, query,where } from "firebase/firestore";
+import { db } from "../../services/firebase/firebaseConfig";
 
 const ItemListContainer = () => {   
     const {categoryId} = useParams();

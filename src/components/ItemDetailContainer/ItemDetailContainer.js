@@ -1,16 +1,8 @@
 import { useState , useEffect} from 'react';
 import { useParams } from 'react-router-dom'
-import { getProductById } from '../../asyncMock'
 import ItemDetail from '../ItemDetail/ItemDetail'
-
-
-// const Cargando = () =>{
-//     if(loading){
-//         setTimeout(() =>{return(
-//             <h1>Cargando....</h1>
-//         )},1000)
-//     }
-// }
+import { getDoc, doc } from 'firebase/firestore';
+import { db } from '../services/firebase/firebaseConfig';
 
 const ItemDetailContainer = ({setCart}) => {
     const [product , setProduct] = useState({})
@@ -18,16 +10,26 @@ const ItemDetailContainer = ({setCart}) => {
     const {productId} = useParams();
 
     useEffect(() =>{    
-        getProductById(productId)
-            .then(product => {
-                setProduct(product)
-            })
-            .catch(error => {
-                console.error(error)
-            })
-            .finally(
-                setLoading(false)
-            )
+        const docRef = doc(db, 'products',productId)
+        getDoc(docRef).then(doc =>{
+            console.log(doc)
+            const data = doc.data()
+            const productAdapted = {id: doc.id, ...data}
+            setProduct(productAdapted)
+        }).catch(error =>{console.log(error)
+        }).finally(()=> {
+            setLoading(false)})
+
+        // getProductById(productId)
+        //     .then(product => {
+        //         setProduct(product)
+        //     })
+        //     .catch(error => {
+        //         console.error(error)
+        //     })
+        //     .finally(
+        //         setLoading(false)
+        //     )
 
     }, [productId])
     

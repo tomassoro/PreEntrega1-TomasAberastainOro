@@ -1,34 +1,37 @@
 import { useEffect, useState } from "react";
-import { getProducts , getProductsByCategory} from '../../asyncMock'
+// import { getProducts , getProductsByCategory} from '../../asyncMock'
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { Spinner } from '@chakra-ui/react'
-
-
+import { collection, getDocs, query,where } from "firebase/firestore";
+import { db } from "../services/firebase/firebaseConfig";
 
 const ItemListContainer = () => {   
     const [products, setProducts] = useState([]);
     const {categoryId} = useParams();
     const [loading, setLoading] = useState(true);
-    
-    
     useEffect(() => { 
-        const asyncFunction = categoryId ? getProductsByCategory : getProducts;
-        //traigo productos si es que en nuestra ruta se encuentra categoyId
-        asyncFunction(categoryId) //llamamos a la funcion y usamos como dato el categoryId que es dado por nuestro useParams
-        .then(products => { //entonces, traeme los productos
-            setTimeout(() => { //aplico un retardo de la llegada y seteo los productos 
-                setLoading(false);
-                setProducts(products);
-            }, 1000)
+        setLoading(true)
+        const collectionRef = categoryId ? query(collection(db, 'products'), where('category', '==', categoryId)) 
+        :collection(db, 'products')
+        
+        getDocs(collectionRef).then(response =>{
+            console.log(response)
+           
+            const productsAdapted = response.docs.map(doc => {
+                const data = doc.data()
+                // console.log(data)
+                // console.log(doc.id)
+                return{id: doc.id, ...data}
+            })
+            setProducts(productsAdapted)
+            console.log(productsAdapted)
+        }).catch(error =>{
+            console.log(error)
+        }).finally(()=>{
+            setLoading(false)
         })
-        .catch((error) => {
-            console.log(error); 
-        })
-        .finally(()=>{
-            setLoading(true)   
-        })
-    }, [categoryId]);
+    }, [categoryId])
     return (
         <div  className="ItemListContainer">
             <h1>Listado de productos</h1>   
@@ -42,4 +45,5 @@ const ItemListContainer = () => {
         </div>
     )
 }
+
 export default ItemListContainer;

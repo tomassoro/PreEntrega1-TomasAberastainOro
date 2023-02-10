@@ -2,18 +2,17 @@ import { useContext, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import {collection, query, where, documentId, getDocs, writeBatch, addDoc} from 'firebase/firestore'
 import { db } from '../../services/firebase/firebaseConfig'
-import { async } from "@firebase/util"
 import { Button, Center, Heading } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom"
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
-    const [orderId, setOrderId] = useState('')
+    const [orderId, setOrderId] = useState('') 
     const { cart, total, clearCart } = useContext(CartContext)
 
     const navigate = useNavigate()
 
-    const createOrder = async () => {
+    const createOrder = async () => { 
         setLoading(true)
         try {
             const objOrder = {

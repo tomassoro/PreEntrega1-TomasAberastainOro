@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
 import { Link } from "react-router-dom"
-import Checkout from "../Checkout/Checkout"
 import { Center, Heading, Button } from "@chakra-ui/react"
 
 const CartContainer = () =>{ 
@@ -19,8 +18,9 @@ const CartContainer = () =>{
             {cart.map(prod =>{
                 return(
                     <div>
-                        <Center>
-                            <div key={prod.id}>
+                        <Center
+                         key={prod.id}>
+                            <div>
                                 <h2>{prod.name}</h2>
                             </div>
                         </Center>

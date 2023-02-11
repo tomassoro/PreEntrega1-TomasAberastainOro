@@ -13,15 +13,14 @@ const CartContainer = () =>{
                     Cart
                 </Heading>
             </Center>
-            
             <div>
 
-            { cart.map(prod =>{
+            {cart.map(prod =>{
                 return(
                     <div>
                         <Center>
-                            <div >
-                                <h2 key={prod.id}>{prod.name}</h2>
+                            <div key={prod.id}>
+                                <h2>{prod.name}</h2>
                             </div>
                         </Center>
                         <Center>

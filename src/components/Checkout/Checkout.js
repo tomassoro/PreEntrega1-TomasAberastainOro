@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import {collection, query, where, documentId, getDocs, writeBatch, addDoc} from 'firebase/firestore'
-import { db } from '../services/firebase/firebaseConfig'
+import { db } from '../../services/firebase/firebaseConfig'
 import { Button, Center, Heading } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom"
 
@@ -131,4 +131,3 @@ const Checkout = () => {
     )
 }
 export default Checkout
-

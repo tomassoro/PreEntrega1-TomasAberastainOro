@@ -17,7 +17,10 @@ const Navbar = () => {
                 <Link to='../category/Imperial'><button className="link">Imperiales</button></Link>
                 <Link to='../category/Yerba'><button className="link">Yerba</button></Link>
             </div>
-            <CartWidget totalQuantity={totalQuantity} className='cartWidget'/>
+            <Link to='/cart'>
+                <CartWidget totalQuantity={totalQuantity} className='cartWidget'/>
+            </Link>
+        
         </nav>
 
     );

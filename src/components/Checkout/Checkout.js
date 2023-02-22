@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom"
         const [loading, setLoading] = useState(false)
         const [orderId, setOrderId] = useState('')
         const { cart, total, clearCart } = useContext(CartContext)
-    
+   
         const navigate = useNavigate()
     
         const createOrder = async () => {
@@ -79,7 +79,7 @@ import { useNavigate } from "react-router-dom"
                     console.log(id)
                 } else {
                     <Center>
-                        hay productos fuera de stock
+                        Hay productos fuera de stock
                     </Center>
                 }
             } catch (error) {
@@ -111,15 +111,7 @@ import { useNavigate } from "react-router-dom"
             )
         }
     
-        if(cart.length === 0) {
-            return (
-                <Center>
-                    <Heading>
-                        No hay productos en el carrito 
-                    </Heading>
-                </Center>
-            )
-        }
+        
     
     return(
         <div>

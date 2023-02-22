@@ -1,5 +1,7 @@
 import { Button, Image } from "@chakra-ui/react"
-const ItemCart = ({name, quantity, img, price }) =>{
+
+const ItemCart = ({name, quantity, img, price}) =>{
+
     return(
         <article className="ItemCart">
             <Image src={img} alt={name} boxSize='115px' objectFit='cover' borderRadius='lg'/>
@@ -13,7 +15,7 @@ const ItemCart = ({name, quantity, img, price }) =>{
             </div>
             <div className="titleCart">
                 <strong>Precio</strong>
-                <strong>${price}</strong>
+                <strong>${price * quantity}</strong>
             </div>
             <Button colorScheme='red'><img style={{height:'25px'}} src="./Images/delete.png" alt="delete"/></Button>
         </article>

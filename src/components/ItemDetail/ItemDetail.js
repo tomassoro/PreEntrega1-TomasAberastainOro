@@ -10,7 +10,7 @@ import { NotificationContext } from '../../notification/NotificationService'
 
 const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
     const [quantity, setQuantity] = useState(0)
-    const { addItem, isInCart } = useContext(CartContext)
+    const { addItem, isInCart} = useContext(CartContext)
     const setNotification = useContext(NotificationContext)
     console.log(quantity)
 
@@ -21,6 +21,7 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
         setQuantity(parseInt(quantity))   
         setNotification(`Se agrego correctamente ${quantity} ${name}`, 5)        
         addItem({ id, name, price, quantity, img})
+        
     }
 
     return (

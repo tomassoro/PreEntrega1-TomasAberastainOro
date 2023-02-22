@@ -1,6 +1,19 @@
 .cartWidget{
     width: 250px;
     display: flex;
-    flex-direction: row;
+    padding:  0 20px;
     align-items: center;
+    justify-content: flex-end;
+
+    .logoCart{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        width: 65px;
+        background-color: #efefef;
+        font-weight: bold;
+    }
+
 }

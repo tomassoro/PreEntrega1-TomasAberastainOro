@@ -1,0 +1,18 @@
+.ItemCart{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+    height: 120px;
+    background-color: #efefef;
+    align-items: center;
+    display: 'flex';
+    margin: 15px 5px 3px;
+    border-radius: 1rem;
+    .titleCart{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+}

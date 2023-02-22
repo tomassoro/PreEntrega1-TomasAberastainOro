@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import CartWidget from "../CartWidget/CarWidget";
+import CartWidget from "../CartWidget/CartWidget";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
+import { Center } from "@chakra-ui/react";
 const Navbar = () => {
     const {totalQuantity} = useContext(CartContext)
     return (
@@ -12,14 +13,14 @@ const Navbar = () => {
                     <h1 fontSize={32}>Los Narvales</h1>
                 </div>
             </Link>    
-            <div className="navBarLinks">
+            <Center className="navBarLinks">
                 <Link to='../'><button className="link">Productos</button></Link>
                 <Link to='../category/Imperial'><button className="link">Imperiales</button></Link>
                 <Link to='../category/Yerba'><button className="link">Yerba</button></Link>
-            </div>
-            <Link to='/cart'>
+            </Center>
+            <div>
                 <CartWidget totalQuantity={totalQuantity} className='cartWidget'/>
-            </Link>
+            </div>
         
         </nav>
 

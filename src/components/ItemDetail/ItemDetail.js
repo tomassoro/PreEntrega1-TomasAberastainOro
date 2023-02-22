@@ -20,7 +20,7 @@ const ItemDetail = ({ id, name, category, img, price, stock, description}) => {
 
         setQuantity(parseInt(quantity))   
         setNotification(`Se agrego correctamente ${quantity} ${name}`, 5)        
-        addItem({ id, name, price, quantity})
+        addItem({ id, name, price, quantity, img})
     }
 
     return (

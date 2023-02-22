@@ -7,7 +7,7 @@ import { collection, getDocs, query,where } from "firebase/firestore";
 import { db } from "../../services/firebase/firebaseConfig";
 
 const ItemListContainer = () => {   
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);   
     const {categoryId} = useParams();
     const [loading, setLoading] = useState(true);
     useEffect(() => { 

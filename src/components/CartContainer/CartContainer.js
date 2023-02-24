@@ -1,12 +1,18 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { CartContext } from "../../context/CartContext"
 import { Link } from "react-router-dom"
 import { Center, Heading,Button} from "@chakra-ui/react"
 import CartList from "../CartList/CartList"
 
+
 const CartContainer = () =>{ 
     const {cart, total} = useContext(CartContext)
     console.log(cart)
+        
+    useEffect(()=>{
+        document.title ='Carrito'
+    }, [])
+    
     if(cart.length === 0) {
         return (
             <Center mt={10}>

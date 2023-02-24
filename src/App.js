@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 import { NotificationProvider } from './notification/NotificationService';
 import { CartProvider } from './context/CartContext';
 import { ChakraProvider } from '@chakra-ui/react'
+import Footer from './components/Footer/Footer';
 
 // import { createContext } from 'react';
 // import { useState } from 'react';
@@ -21,6 +22,7 @@ function App() {
             </BrowserRouter>
           </CartProvider>
         </NotificationProvider>
+        <Footer/>
       </ChakraProvider>
 
     

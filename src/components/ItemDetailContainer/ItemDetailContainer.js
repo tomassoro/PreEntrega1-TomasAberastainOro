@@ -8,7 +8,11 @@ const ItemDetailContainer = ({setCart}) => {
     const [product , setProduct] = useState({})
     const [loading, setLoading] = useState(true)
     const {productId} = useParams();
-
+        
+    useEffect(()=>{
+        document.title ='Detalle'
+    }, [])
+    
     useEffect(() =>{    
         const docRef = doc(db, 'products',productId)
         getDoc(docRef).then(doc =>{

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { CartContext } from "../../context/CartContext"
 import {collection, query, where, documentId, getDocs, writeBatch, addDoc} from 'firebase/firestore'
 import { db } from '../../services/firebase/firebaseConfig'
@@ -14,9 +14,12 @@ import { useNavigate } from "react-router-dom"
         const [loading, setLoading] = useState(false)
         const [orderId, setOrderId] = useState('')
         const { cart, total, clearCart } = useContext(CartContext)
-   
         const navigate = useNavigate()
     
+        useEffect(()=>{
+            document.title ='Checkout'
+        }, [])
+        
         const createOrder = async () => {
             setLoading(true)
             try {

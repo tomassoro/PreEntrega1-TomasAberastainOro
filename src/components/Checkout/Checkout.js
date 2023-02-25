@@ -2,24 +2,26 @@ import { useContext, useState, useEffect } from "react"
 import { CartContext } from "../../context/CartContext"
 import {collection, query, where, documentId, getDocs, writeBatch, addDoc} from 'firebase/firestore'
 import { db } from '../../services/firebase/firebaseConfig'
-import { Center, Heading,     FormControl,
+import { Center, Heading, FormControl,
     FormLabel,
     Input,
     FormHelperText,
     Card,
-    Button, } from '@chakra-ui/react'
+    Button } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom"
+
     
     const Checkout = () => {
         const [loading, setLoading] = useState(false)
         const [orderId, setOrderId] = useState('')
         const { cart, total, clearCart } = useContext(CartContext)
         const navigate = useNavigate()
-    
+        
+        // const [mensaje, setMensaje] = useState('')
         useEffect(()=>{
             document.title ='Check'
         }, [])
-        
+
         const createOrder = async () => {
             setLoading(true)
             try {
@@ -117,32 +119,34 @@ import { useNavigate } from "react-router-dom"
         
     
     return(
-        <div>
+        <div style={{minHeight:'80%'}}>
             <Center padding='35px'>
                 <Heading>
                 Checkout
                 </Heading>    
             </Center>   
             <Center>
-            <Center>
                 <Card padding='55px' backgroundColor='#0001'>
                     <FormControl isRequired>
                         <FormLabel>First name</FormLabel>
-                        <Input placeholder='First name'/>
-                        
+                        <Input placeholder='First name' />
                         <FormLabel>Number</FormLabel>
                         <Input placeholder='+54 9 ...' />
                         
                         <FormLabel>Email address</FormLabel>
                         <Input type='email'/>
                         <FormHelperText>We'll never share your email.</FormHelperText>
+
+                        <Button
+                        mt={4}
+                        colorScheme='teal'
+                        type='submit'> Submit </Button>
                     </FormControl>
                 </Card>  
                 </Center>   
-            </Center>
-            <Center>
-                <Button onClick={createOrder} mt='10px'>Generar orden</Button>
-            </Center>
+                <Center>
+                    <Button mt='10px' onClick={createOrder}>Generar orden</Button> 
+                </Center>
         </div>
     )
 }

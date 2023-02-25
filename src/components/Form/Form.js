@@ -6,7 +6,10 @@ import { Center, FormControl,
     Card,
     Button, } from '@chakra-ui/react'
 
-const Form = (onClick) =>{
+
+
+const Form = () =>{
+
     return(
         <div>
             <Center>
@@ -20,11 +23,16 @@ const Form = (onClick) =>{
                         <FormLabel>Email address</FormLabel>
                         <Input type='email'/>
                         <FormHelperText>We'll never share your email.</FormHelperText>
+
+                        <Button
+                        mt={4}
+                        colorScheme='teal'
+                        type='submit'> Submit </Button>
                     </FormControl>
                 </Card>  
                 </Center>   
                 <Center>
-                    <Button onClick={()=>{onClick()}} mt='10px'>Generar orden</Button> 
+                    <Button mt='10px' onClick={handleOnSubmit}>Generar orden</Button> 
                 </Center>
         </div>
     )

@@ -6,7 +6,7 @@ import { Center } from "@chakra-ui/react";
 const Navbar = () => {
     const {totalQuantity} = useContext(CartContext)
     return (
-        <nav className='navBar'>
+        <nav className='navBar'style={{minHeight:'20%'}}>
             <Link to='../'>
                 <div className="logo">
                     <img src='./Images/faro.png' width='55px' alt='Logo'/>

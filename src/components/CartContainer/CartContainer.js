@@ -15,7 +15,7 @@ const CartContainer = () =>{
     
     if(cart.length === 0) {
         return (
-            <Center mt={10}>
+            <Center mt={10} style={{minHeight:'68vh'}}>
                 <Heading>
                     No hay productos en el carrito :( 
                 </Heading>
@@ -23,7 +23,7 @@ const CartContainer = () =>{
         )
     }
     return(
-        <div style={{minHeight:'71vh'}}>
+        <div style={{minHeight:'73svh'}}>
             <Center mt='20px'>
                 <Heading>
                     Tu carrito.. 

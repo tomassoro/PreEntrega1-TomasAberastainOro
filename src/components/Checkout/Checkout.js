@@ -5,7 +5,8 @@ import { db } from '../../services/firebase/firebaseConfig'
 import { Center, Heading, 
     Input,
     Card,
-    Button } from '@chakra-ui/react'
+    Button, 
+    FormLabel} from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom"
 
     
@@ -97,7 +98,7 @@ import { useNavigate } from "react-router-dom"
     
         if(loading) {
             return (
-            <Center>
+            <Center style={{minHeight:'75vh'}}>
                 <Heading>
                 Generando orden...
                 </Heading>
@@ -107,7 +108,7 @@ import { useNavigate } from "react-router-dom"
     
         if(orderId) {
             return (
-                <Center>
+                <Center style={{minHeight:'75vh'}}>
                     <Heading>
                         <h1>El Id de su compra es: {orderId}</h1>
                     </Heading>
@@ -127,37 +128,39 @@ import { useNavigate } from "react-router-dom"
             <Center>
                 <Card padding='55px' backgroundColor='#0001'>
                     <form onSubmit={createOrder}>
+                        <FormLabel>Nombre
+                        </FormLabel>
                         <Input  
                             type="text" 
                             name='name' 
                             placeholder='Ingrese su nombre'
                             onChange={handleChange}
                         />
-                        
+                        <FormLabel>
+                            Email
+                        </FormLabel>
                         <Input 
                             type="email" 
                             name='email' 
                             placeholder='Ingrese su Email'
                             onChange={handleChange}
                         />
-                            
+                        <FormLabel>Telefono
+                        </FormLabel>
                         <Input 
                             type="phone" 
                             name='phone' 
                             placeholder='Ingrese su Telefono'
                             onChange={handleChange}
                         />
-            
-                        <Button 
-                            type='submit' 
-                        >Submit</Button>
-            
+                        <Center>
+                            <Button mt='10px' mb='10px'
+                                type='submit' 
+                            >Submit</Button>    
+                        </Center>
                     </form>
                 </Card>  
                 </Center>   
-                {/* <Center>
-                    <Button mt='10px' onClick={createOrder}>Generar orden</Button> 
-                </Center> */}
         </div>
     )
 }

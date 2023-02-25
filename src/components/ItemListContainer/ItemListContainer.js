@@ -38,7 +38,7 @@ const ItemListContainer = () => {
         })
     }, [categoryId])
     return (
-        <div  className="ItemListContainer">
+        <div  className="ItemListContainer" style={{minHeight:'79vh'}}>
             <h1>Listado de productos</h1>   
             { <>
                 {loading && <Spinner size='xl' className="spinner"/>}

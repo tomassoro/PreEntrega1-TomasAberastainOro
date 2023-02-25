@@ -38,7 +38,7 @@ const ItemDetailContainer = ({setCart}) => {
     }, [productId])
     
     return (
-        <div style={{display: 'flex', justifyContent:'center', marginTop: 20, fontSize: '1.5rem', minHeight:'80%'}}>
+        <div style={{display: 'flex', justifyContent:'center', marginTop: 20, fontSize: '1.5rem', minHeight:'80vh'}}>
             { <>
                 {loading && <span >Loading...</span>}
                 {loading &&  null}

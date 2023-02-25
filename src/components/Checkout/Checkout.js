@@ -2,10 +2,8 @@ import { useContext, useState, useEffect } from "react"
 import { CartContext } from "../../context/CartContext"
 import {collection, query, where, documentId, getDocs, writeBatch, addDoc} from 'firebase/firestore'
 import { db } from '../../services/firebase/firebaseConfig'
-import { Center, Heading, FormControl,
-    FormLabel,
+import { Center, Heading, 
     Input,
-    FormHelperText,
     Card,
     Button } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom"
@@ -16,21 +14,22 @@ import { useNavigate } from "react-router-dom"
         const [orderId, setOrderId] = useState('')
         const { cart, total, clearCart } = useContext(CartContext)
         const navigate = useNavigate()
+        const [ info, setInfo] = useState()
         
         // const [mensaje, setMensaje] = useState('')
         useEffect(()=>{
-            document.title ='Check'
+            document.title ='Checkout'
         }, [])
-
-        const createOrder = async () => {
+        const handleChange = (event) => {
+            const { name, value } = event.target;
+            setInfo({ ...info, [name]: value });
+        }
+        const createOrder = async (event) => {
+            event.preventDefault();
             setLoading(true)
             try {
                 const objOrder = {
-                    buyer: {
-                        name: 'Tomas Oro',
-                        phone: '123456789',
-                        email: 'tarta@tartutu.ioioio'
-                    },
+                    buyer: info,
                     items: cart,
                     total
                 }
@@ -119,7 +118,7 @@ import { useNavigate } from "react-router-dom"
         
     
     return(
-        <div style={{minHeight:'80%'}}>
+        <div style={{minHeight:'75vh'}}>
             <Center padding='35px'>
                 <Heading>
                 Checkout
@@ -127,26 +126,38 @@ import { useNavigate } from "react-router-dom"
             </Center>   
             <Center>
                 <Card padding='55px' backgroundColor='#0001'>
-                    <FormControl isRequired>
-                        <FormLabel>First name</FormLabel>
-                        <Input placeholder='First name' />
-                        <FormLabel>Number</FormLabel>
-                        <Input placeholder='+54 9 ...' />
+                    <form onSubmit={createOrder}>
+                        <Input  
+                            type="text" 
+                            name='name' 
+                            placeholder='Ingrese su nombre'
+                            onChange={handleChange}
+                        />
                         
-                        <FormLabel>Email address</FormLabel>
-                        <Input type='email'/>
-                        <FormHelperText>We'll never share your email.</FormHelperText>
-
-                        <Button
-                        mt={4}
-                        colorScheme='teal'
-                        type='submit'> Submit </Button>
-                    </FormControl>
+                        <Input 
+                            type="email" 
+                            name='email' 
+                            placeholder='Ingrese su Email'
+                            onChange={handleChange}
+                        />
+                            
+                        <Input 
+                            type="phone" 
+                            name='phone' 
+                            placeholder='Ingrese su Telefono'
+                            onChange={handleChange}
+                        />
+            
+                        <Button 
+                            type='submit' 
+                        >Submit</Button>
+            
+                    </form>
                 </Card>  
                 </Center>   
-                <Center>
+                {/* <Center>
                     <Button mt='10px' onClick={createOrder}>Generar orden</Button> 
-                </Center>
+                </Center> */}
         </div>
     )
 }

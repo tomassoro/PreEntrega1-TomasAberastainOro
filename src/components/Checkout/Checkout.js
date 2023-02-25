@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom"
         const navigate = useNavigate()
     
         useEffect(()=>{
-            document.title ='Checkout'
+            document.title ='Check'
         }, [])
         
         const createOrder = async () => {

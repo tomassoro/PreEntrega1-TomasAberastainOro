@@ -1,12 +1,19 @@
-const Form = () =>{
+
+import { Center, FormControl,
+    FormLabel,
+    Input,
+    FormHelperText,
+    Card,
+    Button, } from '@chakra-ui/react'
+
+const Form = (onClick) =>{
     return(
         <div>
             <Center>
                 <Card padding='55px' backgroundColor='#0001'>
                     <FormControl isRequired>
                         <FormLabel>First name</FormLabel>
-                        <Input placeholder='First name'/>
-                        
+                        <Input placeholder='First name' />
                         <FormLabel>Number</FormLabel>
                         <Input placeholder='+54 9 ...' />
                         
@@ -17,8 +24,9 @@ const Form = () =>{
                 </Card>  
                 </Center>   
                 <Center>
-                    <Button onClick={createOrder} mt='10px'>Generar orden</Button> //se va a pasar por props
+                    <Button onClick={()=>{onClick()}} mt='10px'>Generar orden</Button> 
                 </Center>
         </div>
     )
 }
+export default Form

@@ -23,7 +23,7 @@ const CartContainer = () =>{
         )
     }
     return(
-        <div>
+        <div style={{minHeight:'71vh'}}>
             <Center mt='20px'>
                 <Heading>
                     Tu carrito.. 
